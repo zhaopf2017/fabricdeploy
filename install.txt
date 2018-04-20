@@ -1,1 +1,26 @@
 1, 确定要部署在哪些个主机上。定一个容器所在的主机ip与容器服务名字的对应表。
+
+
+
+peer0.org1.example.com:
+
+  container_name: peer0.org1.example.com
+  
+  extends:
+  
+    file:  base/docker-compose-base.yaml
+    
+    service: peer0.org1.example.com
+    
+  extra_hosts:
+  
+   - "orderer.example.com:10.174.13.185"
+   
+   
+   
+  2，建立共享文件夹，比如使用nfs客户端，加载证书及配置块文件和链码文件。
+  
+  3，注意peer节点不要将自己的解析
+  
+  比如
+  - "peer0.org1.example.com:x.x.x.x"
